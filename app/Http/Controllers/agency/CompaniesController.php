@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\agency;
 
-use App\employer;
+use App\companies;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class EmployerController extends Controller
+class CompaniesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,16 +36,16 @@ class EmployerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\employer  $employer
+     * @param  \App\companies  $companies
      * @return \Illuminate\Http\Response
      */
-    public function show(employer $employer)
+    public function show(companies $companies)
     {
         //
     }
@@ -53,10 +53,10 @@ class EmployerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\employer  $employer
+     * @param  \App\companies  $companies
      * @return \Illuminate\Http\Response
      */
-    public function edit(employer $employer)
+    public function edit(companies $companies)
     {
         //
     }
@@ -65,10 +65,10 @@ class EmployerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\employer  $employer
+     * @param  \App\companies  $companies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, employer $employer)
+    public function update(Request $request, companies $companies)
     {
         //
     }
@@ -76,10 +76,10 @@ class EmployerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\employer  $employer
+     * @param  \App\companies  $companies
      * @return \Illuminate\Http\Response
      */
-    public function destroy(employer $employer)
+    public function destroy(companies $companies)
     {
         //
     }

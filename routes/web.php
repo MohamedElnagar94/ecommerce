@@ -37,7 +37,7 @@ Route::resource('/contactUs', 'agency\ContactusController');
 Route::resource('/cv', 'agency\CvController');
 
 // employer //
-Route::resource('/employer', 'agency\EmployerController');
+Route::resource('/employer', 'agency\CompaniesController');
 
 // job details //
 Route::resource('/jobdetails', 'agency\JobdetailsController');
