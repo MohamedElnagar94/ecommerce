@@ -1,0 +1,5 @@
+@include('agency.includes_agency.header')
+@include('agency.includes_agency.slide')
+@include('agency.includes_agency.menu')
+@yield('content')
+@include('agency.includes_agency.footer')
