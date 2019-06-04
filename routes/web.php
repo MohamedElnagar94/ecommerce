@@ -19,12 +19,20 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+Route::group(['prefix' => 'admin'], function() {
+    Route::group(['middleware' => ['admin']], function () {
+        Route::resource('/', 'AdminController');
+    });
+    Route::group(['middleware' => ['guest']], function () {
+        Route::resource('/login', 'LoginController');
+        Route::resource('/register', 'RegisterController');
+    });
 });
-// Route::get('/', function () {
-//     return view('agency.index');
-// });
+;
+
+Route::get('/', function () {
+    return view('agency.index');
+});
 
 // ================================= agency ==================================== //
 // index //
@@ -62,3 +70,7 @@ Route::resource('/profilemodify', 'agency\ProfilemodifyController');
 
 // profile //
 Route::resource('/profile', 'agency\ProfilepersonalController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

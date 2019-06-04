@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\agency;
+namespace App\Http\Controllers;
 
-use App\index;
 use Illuminate\Http\Request;
+use App\Admin;
+use Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class IndexController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('agency.index');
-        // return 'mohamed';
+        return view('admin.dashboard');
     }
 
     /**
@@ -44,10 +44,10 @@ class IndexController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(index $index)
+    public function show($id)
     {
         //
     }
@@ -55,10 +55,10 @@ class IndexController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(index $index)
+    public function edit($id)
     {
         //
     }
@@ -67,10 +67,10 @@ class IndexController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, index $index)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,10 +78,10 @@ class IndexController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(index $index)
+    public function destroy($id)
     {
         //
     }

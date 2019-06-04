@@ -58,12 +58,9 @@
                         {!! Form::label('employer', 'صاحب العمل'); !!}
                         {!! Form::text('employer', old('employer'), ['class' => 'form-control text-right','placeholder' => 'اسم صاحب العمل']) !!}
                     </div>
-                    {{-- <div class="col-md-6">
-                        <label>رقم صاحب العمل</label>
-                        <input class="form-control" type="text" placeholder="رقم صاحب العمل">
-                    </div> --}}
+
                     <div class="col-md-6">
-                        {!! Form::label('employer_phone', 'صاحب العمل'); !!}
+                        {!! Form::label('employer_phone', 'رقم صاحب العمل'); !!}
                         {!! Form::number('employer_phone', old('employer_phone'), ['class' => 'form-control text-right','placeholder' => 'ادخل موبايل صاحب العمل']) !!}
                     </div>
                     <div class="col-md-6">
@@ -77,7 +74,7 @@
                     </div>   
                 </div>
 
-                {{ Form::close() }}
+            {{ Form::close() }}
         </div>
     </section>
     <!-- ================ end employer ========================== -->

@@ -5,7 +5,7 @@
     <!-- ================ start cv ========================== -->
     <section class="container-fluid cvv">
         <div class="container">
-            <form>
+            {{ Form::open(['route' => 'cv.store' , 'method' => 'post' , 'class' => 'text-right']) }}
                 <div class="row text-center pt-5 pb-3 pl-3 pr-3">
                     <h2 class="text-center d-block w-100 h1 h2_services position-relative mb-4">السيرة الذاتية</h2>
                     <h5 class="text-center d-block w-100 mb-4 time_clock">حاول بقدر الإمكان إستكمال أكبر قدر من البيانات لتكون لديك فرص أفضل للعمل</h5>    
@@ -13,11 +13,13 @@
 
                 <div class="row pb-3 pl-3 pr-3 form-cv">
                     <div class="col-md-12">
-                        <label>الاسم بالكامل</label>
-                        <input class="form-control" type="text" placeholder="اكتب اسمك بالكامل">
+                        {{ Form::label('company_name', 'الاسم بالكامل') }}
+                        {{ Form::text('company_name', old('company_name'), ['class' => 'form-control','placeholder' => 'اكتب اسمك بالكامل']) }}
                     </div>
                     <div class="col-md-6">
-                        <label>الوطيفة</label>
+                        {{ Form::label('company_name', 'الوظيفة') }}
+                        {{ Form::text('company_name', old('company_name'), ['class' => 'form-control','placeholder' => 'اكتب اسمك بالكامل']) }}
+                        <label>الوظيفة</label>
                         <select class="form-control">
                             <option>اختر الوظيفه</option>
                             <option>0100</option>
@@ -521,8 +523,7 @@
                     </div>   
                 </div>
 
-
-            </form>
+            {{ Form::close() }}
         </div>
     </section>
     <!-- ================ end cv ========================== -->

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\agency;
+namespace App\Http\Controllers;
 
-use App\index;
 use Illuminate\Http\Request;
+use App\Admin;
+use Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class IndexController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('agency.index');
-        // return 'mohamed';
+        return view('admin.login');
     }
 
     /**
@@ -38,16 +38,32 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+        $data = [
+            'email' => request()->input('email'),
+            'password' => request()->input('password'),
+            // 'remember_token' => request('rememberme')
+        ];
+        $rememberme = request('rememberme') == 1 ? true : false ;
+        if (Auth::guard('admin')->attempt($data,$rememberme)) {
+            // dd(Auth::guard('admin')->attempt($data,$rememberme));
+            return redirect('/admin');
+        } else {
+            // dd(Auth::guard('admin')->attempt($data,$rememberme));
+            return back();
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(index $index)
+    public function show($id)
     {
         //
     }
@@ -55,10 +71,10 @@ class IndexController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(index $index)
+    public function edit($id)
     {
         //
     }
@@ -67,10 +83,10 @@ class IndexController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, index $index)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,10 +94,10 @@ class IndexController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(index $index)
+    public function destroy($id)
     {
         //
     }
