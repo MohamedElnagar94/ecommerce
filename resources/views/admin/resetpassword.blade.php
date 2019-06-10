@@ -40,13 +40,6 @@
       {!! Form::open(['method'=>'post','route'=>'register.store']) !!}
       
       <div class="form-group has-feedback">
-        {!! Form::text('username', old('username'), ['class'=>'form-control','autofocus','required','placeholder'=>'Full name','style'=>$errors->has('username') ? 'border-color:red' : '']) !!}
-        @if($errors->has('username'))
-            <span style="color: red">{{ $errors->first('username') }}</span>
-        @endif
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
           {!! Form::email('email', old('email'), ['class'=>'form-control','required','placeholder'=>'Email','style'=>$errors->has('email') ? 'border-color:red' : '']) !!}
           @if($errors->has('email'))
               <span style="color: red">{{ $errors->first('email') }}</span>
@@ -70,12 +63,12 @@
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
-            <a href="{{ route('login.index') }}" class="text-center">I already have a membership</a>
-          </div>
+              <a href="{{ route('login.index') }}" class="text-center">Sign In</a>
+            </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-            {!! Form::submit('Register', ['class'=>'btn btn-primary btn-block btn-flat']) !!}
+            {!! Form::submit('Reset', ['class'=>'btn btn-primary btn-block btn-flat']) !!}
         </div>
         <!-- /.col -->
       </div>

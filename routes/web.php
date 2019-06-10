@@ -22,17 +22,23 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function() {
     Route::group(['middleware' => ['admin']], function () {
         Route::resource('/', 'AdminController');
+        Route::get('/logout', 'AdminController@logout')->name('admin.logout');
     });
     Route::group(['middleware' => ['guest']], function () {
+        Route::resource('/forgotpassword', 'ForgotPasswordController');
+        Route::post('/forgotpassword/create', 'ForgotPasswordController@create')->name('forgotpassword.create');
+        Route::get('/forgotpassword/find/{token}', 'ForgotPasswordController@find');
+        // Route::get('/forgotpassword/reset', 'ForgotPasswordController@getreset');
+        Route::post('/forgotpassword/reset', 'ForgotPasswordController@reset')->name('password.reset');
         Route::resource('/login', 'LoginController');
         Route::resource('/register', 'RegisterController');
     });
 });
 ;
 
-Route::get('/', function () {
-    return view('agency.index');
-});
+// Route::get('/', function () {
+//     return view('agency.index');
+// });
 
 // ================================= agency ==================================== //
 // index //

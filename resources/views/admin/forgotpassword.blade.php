@@ -34,44 +34,60 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-        @if(Session::has('succeful'))
-        <span style="color: white;background: green;padding: 10px;display: block;text-align: center;margin-bottom: 15px;">{{ Session::get('succeful')}}</span>
+        <p class="login-box-msg">{{ Session::has('resetsuccess')? 'Reset Password' : 'Forgot Password' }}</p>
+        @if(Session::has('success'))
+        <span style="color: white;background: green;padding: 10px;display: block;text-align: center;margin-bottom: 15px;">{{ Session::get('success')}}</span>
         @endif
-            {!! Form::open(['method'=>'post','route'=>'login.store']) !!}
+        @if(Session::has('errorfind'))
+        <span style="color: white;background: red;padding: 10px;display: block;text-align: center;margin-bottom: 15px;">{{ Session::get('errorfind')}}</span>
+        @endif
+        @if(Session::has('resetsuccess'))
+            {!! Form::open(['method'=>'post','route'=> 'password.reset','class' => 'mohamed']) !!}
+        @else
+            {!! Form::open(['method'=>'post','route'=> 'forgotpassword.create','class' => 'ahmed']) !!}
+        @endif  
             <div class="form-group has-feedback">
-                {!! Form::email('email', old('email'), ['class'=>'form-control','autofocus','placeholder'=>'Email','style'=>$errors->has('email') ? 'border-color:red' : '']) !!}
+                {!! Form::email('email', Session::has('resetsuccess')? $passwordReset->email : old('email') , ['class'=>'form-control','autofocus','placeholder'=>'Email','style'=>$errors->has('email') ? 'border-color:red' : '']) !!}
+                @if(Session::has('error'))
+                <span style="color: red">{{ Session::get('error')}}</span>
+                @endif
                 @if($errors->has('email'))
-                    <span style="color: red">{{ $errors->first('email') }}</span>
+                    <span style="color: red">{{ $errors->first('email') }}{{ Session::get('message')}}</span>
                 @endif
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
-            <div class="form-group has-feedback">
-                {!! Form::password('password', ['class'=>'form-control','placeholder'=>'Password','style'=>$errors->has('password') ? 'border-color:red' : '']) !!}
-                @if($errors->has('password'))
-                    <span style="color: red">{{ $errors->first('password') }}</span>
-                @endif
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
+            @if(Session::has('resetsuccess'))
+                <div class="form-group has-feedback">
+                    {!! Form::password('password', ['class'=>'form-control','required','placeholder'=>'Password','style'=>$errors->has('password') ? 'border-color:red' : '']) !!}
+                    @if($errors->has('password'))
+                        <span style="color: red">{{ $errors->first('password') }}</span>
+                    @endif
+                  <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    {!! Form::password('password_confirmation', ['class'=>'form-control','required','placeholder'=>'Retype password']) !!}
+                    {{--  @if($errors->has('retypepassword'))
+                        <span style="color: red">{{ $errors->first('retypepassword') }}</span>
+                    @endif  --}}
+                  <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            {!! Form::checkbox('rememberme') !!}
-                            Remember me
+                            <a href="{{ route('login.index') }}" class="text-center">Sign In</a>
+                            {{-- <a href="{{ route('register.index') }}" class="text-center">Register a new membership</a> --}}
                         </label>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    {!! Form::submit('Sign In', ['class'=>'btn btn-primary btn-block btn-flat']) !!}
+                    {!! Form::submit(Session::has('resetsuccess')? 'Reset' : 'Send', ['class'=>'btn btn-primary btn-block btn-flat']) !!}
                 </div>
                 <!-- /.col -->
             </div>
         {!! Form::close() !!}
-
-        <a href="{{ route('forgotpassword.index') }}">I forgot my password</a><br>
-        <a href="{{ route('register.index') }}" class="text-center">Register a new membership</a>
 
     </div>
     <!-- /.login-box-body -->

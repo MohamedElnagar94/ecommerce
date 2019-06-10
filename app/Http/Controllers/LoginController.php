@@ -50,6 +50,7 @@ class LoginController extends Controller
         $rememberme = request('rememberme') == 1 ? true : false ;
         if (Auth::guard('admin')->attempt($data,$rememberme)) {
             // dd(Auth::guard('admin')->attempt($data,$rememberme));
+            // sleep(4);
             return redirect('/admin');
         } else {
             // dd(Auth::guard('admin')->attempt($data,$rememberme));
