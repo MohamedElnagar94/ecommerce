@@ -1,5 +1,5 @@
 <?php
-
+use App\Admin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function() {
     Route::group(['middleware' => ['admin']], function () {
         Route::resource('/', 'AdminController');
+        Route::resource('/control', 'Admin\controller\AdminControlController');
         Route::get('/logout', 'AdminController@logout')->name('admin.logout');
     });
     Route::group(['middleware' => ['guest']], function () {
@@ -34,48 +35,50 @@ Route::group(['prefix' => 'admin'], function() {
         Route::resource('/register', 'RegisterController');
     });
 });
-;
 
+// Route::get('/api/admin', function () {
+//     return Admin::all();
+// });
 // Route::get('/', function () {
 //     return view('agency.index');
 // });
 
 // ================================= agency ==================================== //
 // index //
-Route::resource('/', 'agency\IndexController');
+Route::resource('/', 'Agency\IndexController');
 
 // // contact us //
-Route::resource('/contactUs', 'agency\ContactusController');
+Route::resource('/contactUs', 'Agency\ContactusController');
 
 // CV //
-Route::resource('/cv', 'agency\CvController');
+Route::resource('/cv', 'Agency\CvController');
 
 // employer //
-Route::resource('/employer', 'agency\CompaniesController');
+Route::resource('/employer', 'Agency\CompaniesController');
 
 // job details //
-Route::resource('/jobdetails', 'agency\JobdetailsController');
+Route::resource('/jobdetails', 'Agency\JobdetailsController');
 
 // latest news //
-Route::resource('/latestnews', 'agency\LatestnewsController');
+Route::resource('/latestnews', 'Agency\LatestnewsController');
 
 // login //
-Route::resource('/login', 'agency\LoginController');
+Route::resource('/login', 'Agency\LoginController');
 
 // news //
-Route::resource('/news', 'agency\NewsController');
+Route::resource('/news', 'Agency\NewsController');
 
 // papers required for travel //
-Route::resource('/papers', 'agency\PapersController');
+Route::resource('/papers', 'Agency\PapersController');
 
 // profile jobs //
-Route::resource('/profilejobs', 'agency\ProfilejobsController');
+Route::resource('/profilejobs', 'Agency\ProfilejobsController');
 
 // profile modify //
-Route::resource('/profilemodify', 'agency\ProfilemodifyController');
+Route::resource('/profilemodify', 'Agency\ProfilemodifyController');
 
 // profile //
-Route::resource('/profile', 'agency\ProfilepersonalController');
+Route::resource('/profile', 'Agency\ProfilepersonalController');
 
 Auth::routes();
 

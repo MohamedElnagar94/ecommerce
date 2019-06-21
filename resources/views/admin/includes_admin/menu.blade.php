@@ -26,15 +26,15 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="@yield('Dashboard') treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>{{ trans('Admin.Dashboard') }}</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard </a></li>
+            <li class="@yield('Dashboard')"><a href="{{url('/admin')}}"><i class="fa fa-circle-o"></i> Dashboard </a></li>
             {{-- <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li> --}}
           </ul>
         </li>
@@ -61,21 +61,19 @@
             </span>
           </a>
         </li> --}}
-        {{-- <li class="treeview">
+        <li class="@yield('Control') treeview">
           <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
+            <i class="fa fa-cog"></i>
+            {{--  <i class="fa fa-pie-chart"></i>  --}}
+            <span>Admin</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+            <li class="@yield('Control')"><a href="{{route('control.index')}}"><i class="fa fa-shield"></i>Admin Control</a></li>
           </ul>
-        </li> --}}
+        </li>
         {{-- <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>

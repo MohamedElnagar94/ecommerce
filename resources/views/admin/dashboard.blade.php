@@ -1,4 +1,5 @@
 @extends('admin.includes_admin.index')
+@section('Dashboard','active')
 @section('content')
 <!-- Small boxes (Stat box) -->
 <div class="row">

@@ -1,3 +1,5 @@
+{{--  <script type="text/javascript" src="{{url('/')}}/js/app.js"></script>  --}}
+
 <!-- jQuery 3 -->
 <script src="{{url('/')}}/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -6,6 +8,11 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
+<!-- DataTables -->
+<script src="{{url('/')}}/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="{{url('/')}}/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="{{url('/')}}/adminlte/bower_components/datatables.net/js/dataTables.buttons.min.js"></script>
+<script src="{{url('/')}}/vendor/datatables/buttons.server-side.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{url('/')}}/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
@@ -35,5 +42,17 @@
 <script src="{{url('/')}}/adminlte/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('/')}}/adminlte/dist/js/demo.js"></script>
+{{--  <script src="{{url('/')}}/adminlte/dist/js/vue.min.js"></script>  --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+{{-- <script src="{{url('/')}}/adminlte/dist/js/vue.js"></script> --}}
+{{--  <script>
+    $(document).ready(function() {
+        $('#dataTableBuilder').DataTable( {
+            "scrollX": true
+        });
+    });
+</script>  --}}
+@stack('scripts')
 </body>
 </html>

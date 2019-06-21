@@ -1,5 +1,6 @@
 <?php
 
+use App\Admin;
 use Illuminate\Http\Request;
 
 /*
@@ -16,6 +17,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::resource('/admin', 'AdminApiController');
+Route::get('/paper', 'AdminApiController@paper');
+// Route::get('/api/admin', function () {
+//     return Admin::all();
+// });
 
 // Route::group([    
 //     'namespace' => 'Auth',    
